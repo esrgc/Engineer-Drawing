@@ -1,0 +1,116 @@
+﻿@model IEnumerable<ESRGC.GIS.Domain.Model.Drawing>
+@{
+    ViewBag.Title = "Salisbury City - Drawing Manager";
+}
+<div class="mainContainer container-fluid">
+    <div class="row-fluid">
+        <!--Navigation-->
+        <div class="span3">
+            @Html.Partial("adminNavPartial", new ViewDataDictionary() { { "drawingCss", "active" } })
+        </div>
+        <!--Page content-->
+        <div class="span9">
+            <section id="Home">
+                <ul class="breadcrumb">
+                    <li>
+                        <a href="@Url.Action("Index", "Admin")">
+                            Home</a>
+                        <span class="divider">/</span></li>
+                    <li class="active">Drawings</li>
+                </ul>
+                <div class="well">
+                    <h1>@ViewBag.Title</h1>
+                    <p>
+                        @Html.ActionLink("Create New", "Create")
+                    </p>
+                    <table>
+                        <tr>
+                            <th>FileName </th>
+                            <th>FilePathId </th>
+                            <th>SheetNumber </th>
+                            <th>AsBuilt </th>
+                            <th>Book </th>
+                            <th>Page </th>
+                            <th>Plan </th>
+                            <th>Detail </th>
+                            <th>CrossSection </th>
+                            <th>Profile </th>
+                            <th>Elevation </th>
+                            <th>LocationOfValve </th>
+                            <th>DateLastRevised </th>
+                            <th>DateLastIndexed </th>
+                            <th>UserId </th>
+                            <th>Rescan </th>
+                            <th>PaperWidth </th>
+                            <th>PaperHeight </th>
+                            <th></th>
+                        </tr>
+                        @foreach (var item in Model) {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.FileName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.FilePathId)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SheetNumber)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.AsBuilt)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Book)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Page)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Plan)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Detail)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CrossSection)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Profile)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Elevation)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.LocationOfValve)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DateLastRevised)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DateLastIndexed)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.UserId)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Rescan)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PaperWidth)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PaperHeight)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.DrawingId }) |
+                                    @Html.ActionLink("Details", "Details", new { id = item.DrawingId }) |
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.DrawingId })
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+﻿/*Modified openlayer style*/
+.olControlLayerSwitcher
+{
+	top: 85px !important;
+	right: 5px !important;
+}
+.olControlLayerSwitcher .layersDiv
+{
+	filter: alpha(opacity=80); /* for IE */
+	opacity: 0.8; /* CSS3 standard */
+	background: #C3C5C7 !important;
+	border-radius: 10px;
+	box-shadow: 0 5px 5px #ccc;
+	-moz-box-shadow: 0 5px 5px #ccc;
+	-webkit-box-shadow: 0 5px 5px #ccc;
+	-webkit-box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, .8);
+	-moz-box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, .8);
+	cursor: pointer;
+}
+
+.olControlNoSelect span
+{
+	background-color: transparent !important;
+}
+.olButton
+{
+	cursor: pointer;
+}
+.labelSpan
+{
+	display: inline-block;	
+	margin: 0;
+}
+.layersDiv input { margin-top: -5px}
+.olControlPanZoom
+{
+	display: none !important;	
+}
+div.olControlZoom { display: none; }

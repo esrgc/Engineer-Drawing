@@ -1,0 +1,29 @@
+﻿<!--Map Container-->
+<div id="mapContainer">
+    <div id="map">
+    </div>
+    <div id="toolbar" class="overlay">
+    </div>
+    <div class="overlay bottom centerAlign">
+        <div id="statusBar">
+            <div class="centerAlign">
+                <img class="statusElement" id="ajaxLoader" 
+                                    src="@Url.Content("~/Desktop/resources/images/ajax-loader.gif")"
+                                    alt="ESRGC" />
+            </div>
+            <div class="statusElement">
+                <div class="alert alert-info" style="margin: 0;">
+                    <i class="icon-exclamation-sign"></i><strong>Status: </strong><span id="statusUI">
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="footer" class="overlay">
+        <p>
+            <a href="http://www.esrgc.org">
+                <img src="@Url.Content("~/Content/images/esrgc.png")" alt="ESRGC" class="logo img-rounded" />
+            </a>
+        </p>
+    </div>
+</div>

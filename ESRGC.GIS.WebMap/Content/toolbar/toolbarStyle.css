@@ -1,0 +1,87 @@
+﻿/*
+	Elements
+*/
+
+/*Element IDs*/
+/**
+	Toolbar style
+*/
+div#toolbar
+{
+	display: inline-block;
+	width: auto;
+	margin: 0;
+	padding: 10px;
+	top: 8px;
+	right: 5px;
+	background: #C3C5C7;
+	border-radius: 10px;
+	 box-shadow: 0 5px 5px #ccc;
+	-moz-box-shadow:0 5px 5px #ccc;
+	-webkit-box-shadow:0 5px 5px #ccc;
+	-webkit-box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, .8);
+	-moz-box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, .8);
+}
+
+
+/*Classes*/
+/*tool pointer applied to map*/
+.toolbarItemsContainer
+{
+	display: inline-block;
+	padding: 10px;
+	margin: 0;
+	border-radius: 10px;
+	background-color: white;/*#C8E2E8;*/
+}
+.toolItem
+{
+	/*float: left;
+	display: block;
+	background: transparent;
+	
+	margin: 0 5px;
+	padding: 5px;	
+	 box-shadow: 0 0 5px #ccc;
+	-moz-box-shadow:0 0 5px #ccc;
+	-webkit-box-shadow:0 0 5px #ccc;
+	-webkit-box-shadow: 0 0 10px 1px rgba(0, 0, 0, .8);
+	-moz-box-shadow: 0 0 10px 1px rgba(0, 0, 0, .8);
+    border-radius: 5px;*/
+	cursor: pointer;
+	background-repeat: no-repeat;
+	background-position: center;
+	width: 24px;
+	height: 24px;
+}
+
+
+.drawFeatureItem { background-image: url("images/drawLine.png"); }
+.zoomBoxItem { background-image: url("images/ZoomSelection.png"); }
+.zoomOutItem { background-image: url("images/ZoomOut.png"); }
+.panItem { background-image: url("images/Pan.png"); }
+.zoomExtentItem { background-image: url("images/ZoomExtent.png"); }
+.infoItem { background-image: url("images/info.png"); }
+.nextExtentItem{ background-image: url("images/NextExtent.png"); }
+.previousExtentItem { background-image: url("images/PreviousExtent.png"); }
+.lineMeasureItem { background-image: url("images/lengthMeasure.png");}
+.areaMeasureItem { background-image: url("images/areaMeasure.png");}
+.itemActive { background-color: #EBEB10; }
+
+/*cursor on map*/
+#mapContainer .info
+{
+	cursor: url("images/info.png") 11 20, auto;
+}
+#mapContainer .zoomBox
+{
+	cursor: url("images/ZoomSelection.png") 11 20, auto;
+}
+#mapContainer .pan
+{
+	cursor: url("images/Cross.png") 11 20, auto;
+}
+.clear 
+{
+	clear: both;	
+}

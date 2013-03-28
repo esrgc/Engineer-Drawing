@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.Title = "Salisbury City - Signed out";
+}
+<div class="mainContainer container-fluid">
+    <div class="row-fluid">
+        <div class="alert alert-important">
+            <h4>Signed out</h4>
+            <p class="info-block">
+                @Html.Partial("messagePartial")
+            </p>
+            <div>
+                @Html.ActionLink("Back to app", "Index", "Desktop", new { @class = "btn" })
+            </div>
+        </div>
+    </div>
+</div>

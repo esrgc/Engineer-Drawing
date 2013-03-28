@@ -1,0 +1,38 @@
+﻿@model ESRGC.GIS.WebMap.Models.ContractData
+@{
+    dynamic viewData = ViewData["currentViewBag"];    
+    var page = Model.Drawings.PageCount < Model.Drawings.PageNumber ? 0 : Model.Drawings.PageNumber;
+    var action = ViewBag.Action as String;
+}
+<div style="width: 70px; margin: auto;">
+    <strong>Page @page of @Model.Drawings.PageCount
+    </strong>
+</div>
+
+<div class="btn-group">
+    @if (Model.Drawings.HasPreviousPage)
+    {
+        @Html.ActionLink("<<", action, new { id = Model.Contract.ContractId, Page = 1, pageSize = viewData.CurrentPageSize}, new { @class = "btn btn-small btn-info"})
+        @Html.Raw("&nbsp;");
+        @Html.ActionLink("< Prev", action, new { id = Model.Contract.ContractId, Page = Model.Drawings.PageNumber - 1, pageSize = viewData.CurrentPageSize }, new { @class = "btn btn-small btn-info" })
+    }
+    else
+    {
+        <button class="btn btn-info disabled"><< </button>
+            @Html.Raw("&nbsp;");
+        <button class="btn btn-info disabled">< Prev</button>
+    }
+    &nbsp;
+    @if (Model.Drawings.HasNextPage)
+    {
+        @Html.ActionLink("Next >", action, new { id = Model.Contract.ContractId, page = Model.Drawings.PageNumber + 1, pageSize = viewData.CurrentPageSize }, new { @class = "btn btn-small btn-info" })
+        @Html.Raw("&nbsp;");
+        @Html.ActionLink(">>", action, new { id = Model.Contract.ContractId, page = Model.Drawings.PageCount, pageSize = viewData.CurrentPageSize }, new { @class = "btn btn-small btn-info" })
+    }
+    else
+    {
+        <button class="btn btn-info disabled">Next ></button>
+            @Html.Raw("&nbsp;")
+        <button class="btn btn-info disabled">>></button>
+    }
+</div>

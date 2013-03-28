@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Administration Home";
+}
+<div class="mainContainer container-fluid">
+    <div class="row-fluid">
+        <!--Navigation-->
+        <div class="span3">
+            @Html.Partial("adminNavPartial", new ViewDataDictionary() { { "homeCss", "active" } })
+        </div>
+        <!--Page content-->
+        <div class="span9">
+            <section id="Home">
+                <ul class="breadcrumb">
+                    <li class="active">Home</li>
+                </ul>
+                <p>
+                </p>
+                <div class="well">
+                    <h4>@ViewBag.Title</h4>
+                    <ul>
+                        <li>@Html.ActionLink("Manage membership", "Index", "Account")</li>
+                        <li>@Html.ActionLink("Manage contract and drawings", "Index", "Contract")</li>
+                        <li>@Html.ActionLink("Change password", "ChangePassword", "Account")</li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>

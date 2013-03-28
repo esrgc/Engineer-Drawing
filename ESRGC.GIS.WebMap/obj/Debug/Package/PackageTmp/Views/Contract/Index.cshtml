@@ -1,0 +1,89 @@
+﻿@model ESRGC.GIS.WebMap.Models.PagedListCollection<ESRGC.GIS.Domain.Model.Contract>
+@{
+    ViewBag.Title = "Salisbury City - Contract Manager";
+}
+<div class="mainContainer container-fluid">
+    <div class="row-fluid">
+        <!--Navigation-->
+        <div class="span3">
+            @Html.Partial("adminNavPartial", new ViewDataDictionary() { { "ContractCss", "active" } })
+        </div>
+        <!--Page content-->
+        <div class="span9">
+            <section id="Contract">
+                <ul class="breadcrumb">
+                    <li><a href="@Url.Action("Index", "Admin")">Home</a> <span class="divider">/</span></li>
+                    <li class="active">Contracts and drawings</li>
+                </ul>
+                <div class="well">
+                    @Html.Partial("messagePartial")
+                    <!--Search Box-->
+                    <div class="row-fluid">
+                        <div class="pull-left">
+                            @Html.ActionLink("Create new", "Create", new { id = -1 }, new { @class = "btn btn-primary" })
+                        </div>
+                        @using (Html.BeginForm("Index", "Contract", FormMethod.Post, new { @class = "form-search pull-right" })) {
+                            <div class="input-append">
+                                @Html.TextBox("searchString", ViewBag.CurrentFilter as string,
+                                    new { @class = "input-medium search-query", placeholder = "Search contract" })
+                                <input type="submit" value="Search" class="btn" />
+                            </div>
+                        }
+                    </div>
+                    <div class="row-fluid">
+                        <table class="table table-striped">
+                            <tr>
+                                <th>Contract No. </th>
+                                <th>Storm Water </th>
+                                <th>Sanitary </th>
+                                <th>Water </th>
+                                <th>Status </th>
+                                <th></th>
+                            </tr>
+                            @foreach (var item in Model.Collection) {
+                                <tr>
+                                    <td>
+                                        @Html.ActionLink(item.ContractNum, "Detail", new { id = item.ContractId })
+                                    </td>
+                                    <td>
+                                        @if (item.StormWater) {
+                                            <span>Yes</span>
+                                        }
+                                        else {
+                                            <span>No</span>
+                                        }
+                                    </td>
+                                    <td>
+                                        @if (item.Sanitary) {
+                                            <span>Yes</span>
+                                        }
+                                        else {
+                                            <span>No</span>
+                                        }
+                                    </td>
+                                    <td>
+                                        @if (item.Water) {
+                                            <span>Yes</span>
+                                        }
+                                        else {
+                                            <span>No</span>
+                                        }
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Status)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Edit", "Edit", new { id = item.ContractId, currentFilter = ViewBag.CurrentFilter }, new { @class="btn btn-primary btn-mini"}) |
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.ContractId, currentFilter = ViewBag.CurrentFilter }, new { @class = "btn btn-primary btn-mini btn-danger" })
+                                    </td>
+                                </tr>
+                            }
+                        </table>
+                        <br />
+                        @Html.Partial("pagedListNavPartial", new ViewDataDictionary() { { "collection", Model.Collection},{ "viewBag" , ViewBag } })
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>

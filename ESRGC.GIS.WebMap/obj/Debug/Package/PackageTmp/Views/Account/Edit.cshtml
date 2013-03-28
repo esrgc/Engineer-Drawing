@@ -1,0 +1,65 @@
+﻿@model ESRGC.GIS.WebMap.Models.MemberModel
+@{
+    ViewBag.Title = "Salisbury City - Edit User";
+}
+<div class="mainContainer container-fluid">
+    <div class="row-fluid">
+        <!--Navigation-->
+        <div class="span3">
+            @Html.Partial("adminNavPartial", new ViewDataDictionary() { { "MemberCss", "active" } })
+        </div>
+        <!--Page content-->
+        <div class="span9">
+            <section id="Home">
+                <ul class="breadcrumb">
+                    <li><a href="@Url.Action("Index", "Admin")">Home</a> <span class="divider">/</span></li>
+                    <li><a href="@Url.Action("Index", "Account")">Membership</a> <span class="divider">/</span></li>
+                    <li class="active">Edit member</li>
+                </ul>
+                <p>
+                </p>
+                <div class="well">
+                    @using (Html.BeginForm("Edit", "Account", FormMethod.Post, new { @class = "form-horizontal" })) {
+                        @Html.ValidationSummary(true)
+                        <fieldset>
+                            <legend>Edit Member</legend>
+                            <div class="control-group">
+                                <label class="control-label" for="Username">Username</label>
+                                <div class="controls">
+                                   <span class="input-xlarge uneditable-input">@Model.Username</span>
+                                   @Html.HiddenFor(x => x.Username)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="Email">Email</label>
+                                <div class="controls">
+                                    @Html.EditorFor(model => model.Email)
+                                    @Html.ValidationMessageFor(model => model.Email)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="Email">Approved</label>
+                                <div class="controls">
+                                    @Html.EditorFor(model => model.IsApproved)
+                                    @Html.ValidationMessageFor(model => model.IsApproved)
+                                </div>
+                            </div>
+                            @if (Model.IsLocked) {
+                                <div class="control-group">
+                                    <label class="control-label" for="IsLocked">This user is currently locked out. Unlock user? </label>
+                                    <div class="controls">
+                                        @Html.EditorFor(model => model.IsLocked)
+                                    </div>
+                                </div>
+                            }
+                            <div class="form-actions">
+                                <input type="submit" value="Save" class="btn btn-primary" />
+                                @Html.ActionLink("Back to List", "Index", null, new { @class="btn" })
+                            </div>
+                        </fieldset>
+                    }
+                </div>
+            </section>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,533 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BDC90333-9562-439F-BB75-0A0900F7F0B3}</ProjectGuid>
+    <ProjectTypeGuids>{E53F8FEA-EAE0-44A6-8774-FFD645390401};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ESRGC.GIS.WebMap</RootNamespace>
+    <AssemblyName>ESRGC.GIS.WebMap</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EcmaScript.NET">
+      <HintPath>..\packages\EcmaScript.Net.1.0.1.0\lib\net20\EcmaScript.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=4.4.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections">
+      <HintPath>..\packages\Iesi.Collections.3.2.0.4000\lib\Net35\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp">
+      <HintPath>..\packages\iTextSharp.5.3.3\lib\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.1\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject">
+      <HintPath>..\packages\Ninject.2.2.1.4\lib\net40-Full\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList">
+      <HintPath>..\packages\PagedList.1.15.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc">
+      <HintPath>..\packages\PagedList.Mvc.4.0.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Helpers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Yahoo.Yui.Compressor">
+      <HintPath>..\packages\YUICompressor.NET.2.2.0.0\lib\NET20\Yahoo.Yui.Compressor.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class1.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\ContractController.cs" />
+    <Compile Include="Controllers\DesktopController.cs" />
+    <Compile Include="Controllers\DrawingController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\ControllerUtility.cs" />
+    <Compile Include="Infrastructure\NinjectControllerFactory.cs" />
+    <Compile Include="Infrastructure\Services.cs" />
+    <Compile Include="Maps\ImsServices\helperFunction.cs" />
+    <Compile Include="Maps\ImsServices\legend.aspx.cs">
+      <DependentUpon>legend.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Maps\ImsServices\legend.aspx.designer.cs">
+      <DependentUpon>legend.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Maps\ImsServices\wms.aspx.cs">
+      <DependentUpon>wms.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Maps\ImsServices\wms.aspx.designer.cs">
+      <DependentUpon>wms.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201206271953483_initial.cs" />
+    <Compile Include="Migrations\201206271953483_initial.Designer.cs">
+      <DependentUpon>201206271953483_initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\AccountModel.cs" />
+    <Compile Include="Models\DrawingModel.cs" />
+    <Compile Include="Models\MembershipModel.cs" />
+    <Compile Include="Models\ContractModel.cs" />
+    <Compile Include="Models\PagedListCollection.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utility\ImageProcessor.cs" />
+    <Compile Include="Utility\PdfProcessor.cs" />
+    <Compile Include="Validation\EmailValidationAttribute.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap\css\bootstrap-responsive.css" />
+    <Content Include="Content\bootstrap\css\bootstrap-responsive.min.css" />
+    <Content Include="Content\bootstrap\css\bootstrap.css" />
+    <Content Include="Content\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Content\bootstrap\img\glyphicons-halflings-white.png" />
+    <Content Include="Content\bootstrap\img\glyphicons-halflings.png" />
+    <Content Include="Content\images\esrgc.png" />
+    <Content Include="Content\images\favicon.jpg" />
+    <Content Include="Content\images\publicWorkLogo.jpg" />
+    <Content Include="Content\images\salisburyCityLogo.jpg" />
+    <Content Include="Content\iviewer\img\grab.cur" />
+    <Content Include="Content\iviewer\img\hand.cur" />
+    <Content Include="Content\iviewer\img\iviewer.rotate_left.png" />
+    <Content Include="Content\iviewer\img\iviewer.rotate_right.png" />
+    <Content Include="Content\iviewer\img\iviewer.zoom_fit.gif" />
+    <Content Include="Content\iviewer\img\iviewer.zoom_in.gif" />
+    <Content Include="Content\iviewer\img\iviewer.zoom_out.gif" />
+    <Content Include="Content\iviewer\img\iviewer.zoom_zero.gif" />
+    <Content Include="Content\iviewer\jquery.iviewer.css" />
+    <Content Include="Content\jqueryImageSelect\border-anim-h.gif" />
+    <Content Include="Content\jqueryImageSelect\border-anim-v.gif" />
+    <Content Include="Content\jqueryImageSelect\border-h.gif" />
+    <Content Include="Content\jqueryImageSelect\border-v.gif" />
+    <Content Include="Content\jqueryImageSelect\imgareaselect-animated.css" />
+    <Content Include="Content\jqueryImageSelect\imgareaselect-default.css" />
+    <Content Include="Content\jqueryImageSelect\imgareaselect-deprecated.css" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="Contract\Create\app.js" />
+    <Content Include="Contract\Create\app\controller\contract.js" />
+    <Content Include="Contract\Create\app\controller\map.js" />
+    <Content Include="Contract\Create\configurationOL.js" />
+    <Content Include="Contract\Detail\app.js" />
+    <Content Include="Contract\Detail\app\controller\contract.js" />
+    <Content Include="Contract\Detail\app\controller\map.js" />
+    <Content Include="Contract\Detail\app\store\contract.js" />
+    <Content Include="Contract\Detail\configurationOL.js" />
+    <Content Include="Contract\Edit\app.js" />
+    <Content Include="Contract\Edit\app\controller\contract.js" />
+    <Content Include="Contract\Edit\app\controller\map.js" />
+    <Content Include="Contract\Edit\configurationOL.js" />
+    <Content Include="Desktop\app.js" />
+    <Content Include="Desktop\app\store\account.js" />
+    <Content Include="Scripts\ESRGC\Store\mdImapGeocoder.js" />
+    <Content Include="Desktop\app\model\contract.js" />
+    <Content Include="Desktop\app\controller\drawing.js" />
+    <Content Include="Desktop\app\controller\home.js" />
+    <Content Include="Desktop\app\controller\map.js" />
+    <Content Include="Desktop\app\controller\searchFilter.js" />
+    <Content Include="Desktop\app\controller\contract.js" />
+    <Content Include="Desktop\app\model\drawing.js" />
+    <Content Include="Desktop\app\store\contractByGeom.js" />
+    <Content Include="Desktop\app\store\contract.js" />
+    <Content Include="Desktop\app\store\contractPolygon.js" />
+    <Content Include="Desktop\app\store\drawingById.js" />
+    <Content Include="Desktop\app\store\partialDrawing.js" />
+    <Content Include="Desktop\app\view\home.js" />
+    <Content Include="Desktop\configurationLeaflet.js" />
+    <Content Include="Desktop\configurationOL.js" />
+    <Content Include="Desktop\LeafletMap.html" />
+    <Content Include="Desktop\OLMap.html" />
+    <Content Include="Desktop\osm.html" />
+    <Content Include="Content\appStyle.css" />
+    <Content Include="Content\jqueryUI\images\ui-bg_diagonals-thick_90_eeeeee_40x40.png" />
+    <Content Include="Content\jqueryUI\images\ui-bg_flat_15_cd0a0a_40x100.png" />
+    <Content Include="Content\jqueryUI\images\ui-bg_glass_100_e4f1fb_1x400.png" />
+    <Content Include="Content\jqueryUI\images\ui-bg_glass_50_3baae3_1x400.png" />
+    <Content Include="Content\jqueryUI\images\ui-bg_glass_80_d7ebf9_1x400.png" />
+    <Content Include="Content\jqueryUI\images\ui-bg_highlight-hard_100_f2f5f7_1x100.png" />
+    <Content Include="Content\jqueryUI\images\ui-bg_highlight-hard_70_000000_1x100.png" />
+    <Content Include="Content\jqueryUI\images\ui-bg_highlight-soft_100_deedf7_1x100.png" />
+    <Content Include="Content\jqueryUI\images\ui-bg_highlight-soft_25_ffef8f_1x100.png" />
+    <Content Include="Content\jqueryUI\images\ui-icons_2694e8_256x240.png" />
+    <Content Include="Content\jqueryUI\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\jqueryUI\images\ui-icons_3d80b3_256x240.png" />
+    <Content Include="Content\jqueryUI\images\ui-icons_72a7cf_256x240.png" />
+    <Content Include="Content\jqueryUI\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\jqueryUI\jquery-ui-1.8.18.custom.css" />
+    <Content Include="Content\mapStyle.css" />
+    <Content Include="Content\olCustomStyle.css" />
+    <Content Include="Content\toolbar\images\areaMeasure.png" />
+    <Content Include="Content\toolbar\images\lengthMeasure.png" />
+    <Content Include="Content\toolbar\images\NextExtent.png" />
+    <Content Include="Content\toolbar\images\PreviousExtent.png" />
+    <Content Include="Content\toolbar\toolbarStyle.css" />
+    <Content Include="Desktop\resources\images\ajax-loader-fb.gif" />
+    <Content Include="Desktop\resources\images\ajax-loader.gif" />
+    <Content Include="Content\toolbar\images\Cross.png" />
+    <Content Include="Content\toolbar\images\drawLine.png" />
+    <Content Include="Content\images\esrgclogo.jpg" />
+    <Content Include="Content\toolbar\images\info.png" />
+    <Content Include="Content\toolbar\images\Pan.png" />
+    <Content Include="Content\toolbar\images\SizeAll.png" />
+    <Content Include="Content\toolbar\images\toolBackground.gif" />
+    <Content Include="Content\toolbar\images\ZoomExtent.png" />
+    <Content Include="Content\toolbar\images\ZoomIn.png" />
+    <Content Include="Content\toolbar\images\ZoomOut.png" />
+    <Content Include="Content\toolbar\images\ZoomSelection.png" />
+    <Content Include="Scripts\ESRGC\Application\application.js" />
+    <Content Include="Scripts\TwitterBootstrap\bootstrap.js" />
+    <Content Include="Scripts\TwitterBootstrap\bootstrap.min.js" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Account\LogOn.cshtml" />
+    <Content Include="Views\Shared\logOnPartial.cshtml" />
+    <Content Include="Views\Shared\logonFormPartial.cshtml" />
+    <Content Include="Views\Shared\contractSearchFrmPartial.cshtml" />
+    <Content Include="Views\Shared\adminNavPartial.cshtml" />
+    <Content Include="Views\Account\Create.cshtml" />
+    <Content Include="Views\Contract\Index.cshtml" />
+    <Content Include="Views\Drawing\Index.cshtml" />
+    <Content Include="Views\Account\Index.cshtml" />
+    <Content Include="Views\Account\Delete.cshtml" />
+    <Content Include="Views\Account\ChangePassword.cshtml" />
+    <Content Include="Views\Account\ChangePasswordSuccess.cshtml" />
+    <Content Include="Views\Account\LogOff.cshtml" />
+    <Content Include="Views\Account\Edit.cshtml" />
+    <Content Include="Views\Shared\pagedListNavPartial.cshtml" />
+    <Content Include="Views\Shared\notAuthorizedPartial.cshtml" />
+    <Content Include="Views\Contract\Detail.cshtml" />
+    <Content Include="Views\Shared\mapPartial.cshtml" />
+    <Content Include="Views\Drawing\Detail.cshtml" />
+    <Content Include="Views\Drawing\Edit.cshtml" />
+    <Content Include="Views\Drawing\Create.cshtml" />
+    <Content Include="Views\Contract\Create.cshtml" />
+    <Content Include="Views\Contract\Delete.cshtml" />
+    <Content Include="Views\Contract\Edit.cshtml" />
+    <Content Include="Views\Drawing\Delete.cshtml" />
+    <None Include="_bin_deployableAssemblies\Microsoft.Web.Infrastructure.dll" />
+    <None Include="_bin_deployableAssemblies\System.Web.WebPages.Razor.dll" />
+    <None Include="_bin_deployableAssemblies\System.Web.WebPages.dll" />
+    <None Include="_bin_deployableAssemblies\System.Web.WebPages.Deployment.dll" />
+    <None Include="_bin_deployableAssemblies\System.Web.Razor.dll" />
+    <None Include="_bin_deployableAssemblies\System.Web.Helpers.dll" />
+    <None Include="_bin_deployableAssemblies\System.Web.Mvc.dll" />
+    <None Include="Desktop\resources\style\toolbar.scss" />
+    <Content Include="Desktop\testImageLayer.html" />
+    <Content Include="Scripts\ESRGC\component.js" />
+    <Content Include="Scripts\ESRGC\Controller\base.js" />
+    <Content Include="Scripts\ESRGC\Model\base.js" />
+    <Content Include="Scripts\ESRGC\Store\base.js" />
+    <Content Include="Scripts\ESRGC\toolbar.js" />
+    <Content Include="Scripts\ESRGC\toolItem.js" />
+    <Content Include="Global.asax" />
+    <Content Include="Maps\ImsServices\legend.aspx" />
+    <Content Include="Maps\ImsServices\wms.aspx" />
+    <Content Include="Mobile\app.js" />
+    <Content Include="Mobile\index.html" />
+    <Content Include="Mobile\resources\src\sencha-touch-all-debug.js" />
+    <Content Include="Mobile\resources\src\sencha-touch-all.js" />
+    <Content Include="Mobile\resources\src\sencha-touch-debug.js" />
+    <Content Include="Mobile\resources\src\sencha-touch.js" />
+    <Content Include="Mobile\resources\css\android.css" />
+    <Content Include="Mobile\resources\css\apple.css" />
+    <Content Include="Mobile\resources\css\bb6.css" />
+    <Content Include="Mobile\resources\css\sencha-touch.css" />
+    <Content Include="Mobile\resources\css\touch-charts.css" />
+    <Content Include="README.jQuery.vsdoc.txt" />
+    <Content Include="Scripts\JQueryPlugins\IViewer\jquery.iviewer.js" />
+    <Content Include="Scripts\JQueryPlugins\IViewer\jquery.iviewer.min.js" />
+    <Content Include="Scripts\JQueryPlugins\IViewer\jquery.mousewheel.min.js" />
+    <Content Include="Scripts\JQuery\jquery-1.7.1-vsdoc.js" />
+    <Content Include="Scripts\JQuery\jquery-1.7.1.js" />
+    <Content Include="Scripts\JQuery\jquery-1.7.1.min.js" />
+    <Content Include="Scripts\JQuery\jquery-ui-1.8.18.custom.min.js" />
+    <Content Include="Scripts\JQueryPlugins\jquery.jqprint-0.3.js" />
+    <Content Include="Scripts\JQuery\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\JQuery\jquery.validate.js" />
+    <Content Include="Scripts\JQuery\jquery.validate.min.js" />
+    <Content Include="Scripts\JQueryPlugins\jqueryImageSelect\jquery.imgareaselect.js" />
+    <Content Include="Scripts\JQueryPlugins\jqueryImageSelect\jquery.imgareaselect.min.js" />
+    <Content Include="Scripts\JQueryPlugins\jqueryImageSelect\jquery.imgareaselect.pack.js" />
+    <Content Include="Scripts\JQueryPlugins\jqueryImageSelect\jquery.min.js" />
+    <Content Include="Scripts\Map\Leaflet\baseScript.js" />
+    <Content Include="Scripts\Map\Leaflet\cloudMadeMapViewer.js" />
+    <Content Include="Scripts\Map\Leaflet\cloudMadeMapViewerMobile.js" />
+    <Content Include="Scripts\Map\Leaflet\osmMapViewer.js" />
+    <Content Include="Scripts\Map\Leaflet\src\images\layers.png" />
+    <Content Include="Scripts\Map\Leaflet\src\images\marker-shadow.png" />
+    <Content Include="Scripts\Map\Leaflet\src\images\marker.png" />
+    <Content Include="Scripts\Map\Leaflet\src\images\popup-close.png" />
+    <Content Include="Scripts\Map\Leaflet\src\images\zoom-in.png" />
+    <Content Include="Scripts\Map\Leaflet\src\images\zoom-out.png" />
+    <Content Include="Scripts\Map\Leaflet\src\leaflet-src.js" />
+    <Content Include="Scripts\Map\Leaflet\src\leaflet.css" />
+    <Content Include="Scripts\Map\Leaflet\src\leaflet.ie.css" />
+    <Content Include="Scripts\Map\Leaflet\src\leaflet.js" />
+    <Content Include="Scripts\Map\Openlayers\baseScript.js" />
+    <Content Include="Scripts\Map\Openlayers\customDrawFeature.js" />
+    <Content Include="Scripts\Map\Openlayers\iMapViewer.js" />
+    <Content Include="Scripts\Map\Openlayers\iMapViewerMobile.js" />
+    <Content Include="Scripts\Map\Openlayers\mapControl.js" />
+    <Content Include="Scripts\Map\Openlayers\OLClickControl.js" />
+    <Content Include="Scripts\Map\Openlayers\osmMapViewer.js" />
+    <Content Include="Scripts\Map\Openlayers\osmMapViewerMobile.js" />
+    <Content Include="Scripts\Map\Openlayers\src\ArcGISLayer.js" />
+    <Content Include="Scripts\Map\Openlayers\src\img\blank.gif" />
+    <Content Include="Scripts\Map\Openlayers\src\img\cloud-popup-relative.png" />
+    <Content Include="Scripts\Map\Openlayers\src\img\drag-rectangle-off.png" />
+    <Content Include="Scripts\Map\Openlayers\src\img\drag-rectangle-on.png" />
+    <Content Include="Scripts\Map\Openlayers\src\img\east-mini.png" />
+    <Content Include="Scripts\Map\Openlayers\src\img\layer-switcher-maximize.png" />
+    <Content Include="Scripts\Map\Openlayers\src\img\layer-switcher-minimize.png" />
+    <Content Include="Scripts\Map\Openlayers\src\img\marker-blue.png" />
+    <Content Include="Scripts\Map\Openlayers\src\img\marker-gold.png" />
+    <Content Include="Scripts\Map\Openlayers\src\img\marker-green.png" />
+    <Content Include="Scripts\Map\Openlayers\src\img\marker.png" />
+    <Content Include="Scripts\Map\Openlayers\src\img\measuring-stick-off.png" />
+    <Content Include="Scripts\Map\Openlayers\src\img\measuring-stick-on.png" />
+    <Content Include="Scripts\Map\Openlayers\src\img\north-mini.png" />
+    <Content Include="Scripts\Map\Openlayers\src\img\panning-hand-off.png" />
+    <Content Include="Scripts\Map\Openlayers\src\img\panning-hand-on.png" />
+    <Content Include="Scripts\Map\Openlayers\src\img\slider.png" />
+    <Content Include="Scripts\Map\Openlayers\src\img\south-mini.png" />
+    <Content Include="Scripts\Map\Openlayers\src\img\west-mini.png" />
+    <Content Include="Scripts\Map\Openlayers\src\img\zoom-minus-mini.png" />
+    <Content Include="Scripts\Map\Openlayers\src\img\zoom-panel.png" />
+    <Content Include="Scripts\Map\Openlayers\src\img\zoom-plus-mini.png" />
+    <Content Include="Scripts\Map\Openlayers\src\img\zoom-world-mini.png" />
+    <Content Include="Scripts\Map\Openlayers\src\img\zoombar.png" />
+    <Content Include="Scripts\Map\Openlayers\src\OpenLayers-dev.js" />
+    <Content Include="Scripts\Map\Openlayers\src\OpenLayers.debug.js" />
+    <Content Include="Scripts\Map\Openlayers\src\OpenLayers.js" />
+    <Content Include="Scripts\Map\Openlayers\src\OpenLayers.light.debug.js" />
+    <Content Include="Scripts\Map\Openlayers\src\OpenLayers.light.js" />
+    <Content Include="Scripts\Map\Openlayers\src\OpenLayers.mobile.debug.js" />
+    <Content Include="Scripts\Map\Openlayers\src\OpenLayers.mobile.js" />
+    <Content Include="Scripts\Map\Openlayers\src\theme\default\google.css" />
+    <Content Include="Scripts\Map\Openlayers\src\theme\default\google.tidy.css" />
+    <Content Include="Scripts\Map\Openlayers\src\theme\default\ie6-style.css" />
+    <Content Include="Scripts\Map\Openlayers\src\theme\default\ie6-style.tidy.css" />
+    <Content Include="Scripts\Map\Openlayers\src\theme\default\img\add_point_off.png" />
+    <Content Include="Scripts\Map\Openlayers\src\theme\default\img\add_point_on.png" />
+    <Content Include="Scripts\Map\Openlayers\src\theme\default\img\blank.gif" />
+    <Content Include="Scripts\Map\Openlayers\src\theme\default\img\close.gif" />
+    <Content Include="Scripts\Map\Openlayers\src\theme\default\img\drag-rectangle-off.png" />
+    <Content Include="Scripts\Map\Openlayers\src\theme\default\img\drag-rectangle-on.png" />
+    <Content Include="Scripts\Map\Openlayers\src\theme\default\img\draw_line_off.png" />
+    <Content Include="Scripts\Map\Openlayers\src\theme\default\img\draw_line_on.png" />
+    <Content Include="Scripts\Map\Openlayers\src\theme\default\img\draw_point_off.png" />
+    <Content Include="Scripts\Map\Openlayers\src\theme\default\img\draw_point_on.png" />
+    <Content Include="Scripts\Map\Openlayers\src\theme\default\img\draw_polygon_off.png" />
+    <Content Include="Scripts\Map\Openlayers\src\theme\default\img\draw_polygon_on.png" />
+    <Content Include="Scripts\Map\Openlayers\src\theme\default\img\editing_tool_bar.png" />
+    <Content Include="Scripts\Map\Openlayers\src\theme\default\img\move_feature_off.png" />
+    <Content Include="Scripts\Map\Openlayers\src\theme\default\img\move_feature_on.png" />
+    <Content Include="Scripts\Map\Openlayers\src\theme\default\img\navigation_history.png" />
+    <Content Include="Scripts\Map\Openlayers\src\theme\default\img\overview_replacement.gif" />
+    <Content Include="Scripts\Map\Openlayers\src\theme\default\img\pan-panel-NOALPHA.png" />
+    <Content Include="Scripts\Map\Openlayers\src\theme\default\img\pan-panel.png" />
+    <Content Include="Scripts\Map\Openlayers\src\theme\default\img\panning-hand-off.png" />
+    <Content Include="Scripts\Map\Openlayers\src\theme\default\img\panning-hand-on.png" />
+    <Content Include="Scripts\Map\Openlayers\src\theme\default\img\pan_off.png" />
+    <Content Include="Scripts\Map\Openlayers\src\theme\default\img\pan_on.png" />
+    <Content Include="Scripts\Map\Openlayers\src\theme\default\img\remove_point_off.png" />
+    <Content Include="Scripts\Map\Openlayers\src\theme\default\img\remove_point_on.png" />
+    <Content Include="Scripts\Map\Openlayers\src\theme\default\img\ruler.png" />
+    <Content Include="Scripts\Map\Openlayers\src\theme\default\img\save_features_off.png" />
+    <Content Include="Scripts\Map\Openlayers\src\theme\default\img\save_features_on.png" />
+    <Content Include="Scripts\Map\Openlayers\src\theme\default\img\view_next_off.png" />
+    <Content Include="Scripts\Map\Openlayers\src\theme\default\img\view_next_on.png" />
+    <Content Include="Scripts\Map\Openlayers\src\theme\default\img\view_previous_off.png" />
+    <Content Include="Scripts\Map\Openlayers\src\theme\default\img\view_previous_on.png" />
+    <Content Include="Scripts\Map\Openlayers\src\theme\default\img\zoom-panel-NOALPHA.png" />
+    <Content Include="Scripts\Map\Openlayers\src\theme\default\img\zoom-panel.png" />
+    <Content Include="Scripts\Map\Openlayers\src\theme\default\style.css" />
+    <Content Include="Scripts\Map\Openlayers\src\theme\default\style.mobile.css" />
+    <Content Include="Scripts\Map\Openlayers\src\theme\default\style.mobile.tidy.css" />
+    <Content Include="Scripts\Map\Openlayers\src\theme\default\style.tidy.css" />
+    <Content Include="Scripts\Map\Openlayers\toolbar.js" />
+    <Content Include="Scripts\modernizr-1.7.min.js" />
+    <Content Include="Scripts\modernizr-2.5.3.js" />
+    <Content Include="Scripts\ESRGC\Script.js" />
+    <Content Include="Scripts\PagedList\PagedList.Mvc.js" />
+    <Content Include="Scripts\PagedList\PagedList.Mvc.Template.html" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Scripts\JQuery\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\JQuery\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\JQuery\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\JQuery\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\MicrosoftAjax.js" />
+    <Content Include="Scripts\MicrosoftAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcValidation.js" />
+    <Content Include="Scripts\MicrosoftMvcValidation.debug.js" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Desktop\Index.cshtml" />
+    <Content Include="Views\Contract\Contract.cshtml" />
+    <Content Include="Views\Shared\contractPagingPartial.cshtml" />
+    <Content Include="Views\Drawing\Drawing.cshtml" />
+    <Content Include="Views\Shared\messagePartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Contract\Create\app\model\" />
+    <Folder Include="Contract\Create\app\store\" />
+    <Folder Include="Contract\Create\app\view\" />
+    <Folder Include="Contract\Create\resources\" />
+    <Folder Include="Contract\Detail\app\model\" />
+    <Folder Include="Contract\Detail\app\view\" />
+    <Folder Include="Contract\Detail\resources\" />
+    <Folder Include="Contract\Edit\app\model\" />
+    <Folder Include="Contract\Edit\app\store\" />
+    <Folder Include="Contract\Edit\app\view\" />
+    <Folder Include="Contract\Edit\resources\" />
+    <Folder Include="Desktop\resources\css\" />
+    <Folder Include="Desktop\resources\src\" />
+    <Folder Include="Mobile\app\controller\" />
+    <Folder Include="Mobile\app\model\" />
+    <Folder Include="Mobile\app\profile\" />
+    <Folder Include="Mobile\app\store\" />
+    <Folder Include="Mobile\app\view\" />
+    <Folder Include="Mobile\resources\images\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Desktop\Desktop.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Manifold">
+      <Guid>{3F343400-7ABF-11D5-BAFA-00A0C98DED6D}</Guid>
+      <VersionMajor>4</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="stdole">
+      <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ESRGC.GIS.Domain\ESRGC.GIS.Domain.csproj">
+      <Project>{BA355912-6538-44C5-9CF0-66B291C794A4}</Project>
+      <Name>ESRGC.GIS.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>7421</DevelopmentServerPort>
+          <DevelopmentServerVPath>/SalisburyCity</DevelopmentServerVPath>
+          <IISUrl>http://localhost/EngineerDrawing</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

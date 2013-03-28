@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "DeleteUser";
+}
+<div class="mainContainer container-fluid">
+    <div class="row-fluid">
+        <!--Navigation-->
+        <div class="span3">
+            @Html.Partial("adminNavPartial", new ViewDataDictionary() { { "memberCss", "active" } })
+        </div>
+        <!--Page content-->
+        <div class="span9">
+            <section id="members">
+                <ul class="breadcrumb">
+                    <li><a href="@Url.Action("Index", "Admin")">Home</a> <span class="divider">/</span></li>
+                    <li><a href="@Url.Action("Index", "Account")">Membership</a> <span class="divider">/</span></li>
+                    <li class="active">Delete User</li>
+                </ul>
+                <div class="well">
+                    <div class="alert alert-block alert-important">
+                        <h4>Delete Confirmation</h4>
+                        <p>
+                            <span>Are you sure you want to delete user </span> <strong>@ViewBag.Username</strong>
+                        </p>
+                        <p>
+                            @Html.ActionLink(
+                                "Delete", "Delete",
+                                new { username = ViewBag.Username, confirmed = true },
+                                new { @class = "btn btn-danger" })
+                            @Html.ActionLink("Cancel", "Index", null, new { @class = "btn" })
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>

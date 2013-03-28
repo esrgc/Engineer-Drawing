@@ -1,0 +1,14 @@
+﻿<form id="@ViewData["formId"]" class="form-search">    
+    <div class="input-append control-group">
+        <div class="controls">
+            <input id="contractNum" name="contractNum" type="text" 
+                value="@ViewData["contractNum"]" class="input-medium search-query"
+                placeholder="Enter contract #" />
+            <button type="submit" class="btn"
+                rel="tooltip" 
+                data-placement="right"
+                data-original-title="Search for contracts by number">
+            <i class="icon-search"></i></button>
+        </div>
+    </div>
+</form>

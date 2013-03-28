@@ -1,0 +1,96 @@
+﻿@model ESRGC.GIS.WebMap.Models.PagedListCollection<ESRGC.GIS.WebMap.Models.MemberModel>
+@{
+    ViewBag.Title = "Salisbury City - Member Manager";
+}
+<div class="mainContainer container-fluid">
+    <div class="row-fluid">
+        <!--Navigation-->
+        <div class="span3">
+            @Html.Partial("adminNavPartial", new ViewDataDictionary() { { "memberCss", "active" } })
+        </div>
+        <!--Page content-->
+        <div class="span9">
+            <section id="members">
+                <ul class="breadcrumb">
+                    <li><a href="@Url.Action("Index", "Admin")">Home</a> <span class="divider">/</span></li>
+                    <li class="active">Membership</li>
+                </ul>
+                <div class="well">
+                    @Html.Partial("messagePartial")
+                    <!--Search Box-->
+                    <div class="row-fluid">
+                        <div class="pull-left">
+                            @Html.ActionLink("Create new", "Create", new { }, new { @class = "btn btn-primary" })
+                        </div>
+                        @using (Html.BeginForm("Index", "Account", FormMethod.Post, new { @class = "form-search pull-right" })) {
+                            <div class="input-append">
+                                @Html.TextBox("searchString", ViewBag.CurrentFilter as string,
+                                    new { @class = "input-medium search-query", placeholder = "Search member" })
+                                <input type="submit" value="Search" class="btn" />
+                            </div>
+                        }
+                    </div>                    
+                    <div class="row-fluid">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Username </th>
+                                    <th>Email </th>
+                                    <th>Approved </th>
+                                    <th>Status </th>
+                                    <th>Locked </th>
+                                    <th>Last Login </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var member in Model.Collection) {
+                                    <tr>
+                                        <td>@member.Username</td>
+                                        <td>@member.Email</td>
+                                        @{ if (member.IsApproved) { 
+                                            @:<td>Yes</td>
+                                           }
+                                           else { 
+                                            <td>No. @Html.ActionLink("Approve this user", "ApproveUser", new { username = member.Username, currentFilter = ViewBag.CurrentFilter, page = Model.Collection.PageNumber })
+                                            </td>
+                                           }
+                                        }
+                                        <td>
+                                            @{var status = member.IsOnline ? "Online" : "Offline";}
+                                            @status
+                                        </td>
+                                        @{ if (!member.IsLocked) { 
+                                            @:<td>No</td>
+                                            }
+                                           else { 
+                                            <td>@Html.ActionLink("Unlock", "ChangeUserStatus", new { username = member.Username, command = "unlock", currentFilter = ViewBag.CurrentFilter, page = Model.Collection.PageNumber })
+                                            </td>
+                                           }
+                                        }
+                                        <td>@member.LastLoginDate
+                                        </td>
+                                        @if (!member.Roles.Contains("admin")) { 
+                                            <td>@Html.ActionLink("Make Admin", "AssignAdmin", new { username = member.Username, command = "assign", currentFilter = ViewBag.CurrentFilter, page = Model.Collection.PageNumber })
+                                            </td>
+                                        }
+                                        else { 
+                                            <td>@Html.ActionLink("Remove Admin", "AssignAdmin", new { username = member.Username, command = "remove", currentFilter = ViewBag.CurrentFilter, page = Model.Collection.PageNumber })
+                                            </td>
+                                        }
+                                        <td>
+                                            @Html.ActionLink("Delete", "Delete", new { username = member.Username, confirmed = false, currentFilter = ViewBag.CurrentFilter, page = Model.Collection.PageNumber })
+                                            <span>/</span>
+                                            @Html.ActionLink("Edit", "Edit", new { username = member.Username })
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                        <br />
+                        @Html.Partial("pagedListNavPartial", new ViewDataDictionary() { { "collection", Model.Collection }, { "viewBag", ViewBag} })
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>

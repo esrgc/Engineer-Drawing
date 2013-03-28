@@ -1,0 +1,166 @@
+﻿@model ESRGC.GIS.WebMap.Models.ContractData
+@{
+    ViewBag.Title = "Salisbury City - Contract detail";
+}
+@{ var contract = Model.Contract; var drawings = Model.Drawings; }
+<div class="mainContainer container-fluid">
+    <div class="row-fluid">
+        <!--Navigation-->
+        <div class="span3">
+            @Html.Partial("adminNavPartial", new ViewDataDictionary() { { "ContractCss", "active" } })
+        </div>
+        <!--Page content-->
+        <div class="span9">
+            <section id="Contract">
+                <ul class="breadcrumb">
+                    <li>
+                        <a href="@Url.Action("Index", "Admin")">
+                            Home</a><span class="divider">/</span></li>
+                    <li>
+                        <a href="@Url.Action("Index", "Contract")">
+                            Contracts and drawings</a><span class="divider">/</span></li>
+                    <li class="active">
+                        Contract @Model.Contract.ContractNum</li>
+                </ul>
+                <!--main content-->
+                <div class="well">
+                    @Html.Partial("messagePartial")
+                    <fieldset><legend>Contract <strong>@contract.ContractNum</strong></legend>
+                        <div class="row-fluid">
+                            @{
+                                var contractType = "";
+                                if (contract.StormWater) { contractType = "Storm Water"; }
+                                else if (contract.Water) { contractType = "Water"; }
+                                else if (contract.Sanitary) { contractType = "Sanitary"; }
+                            }
+                            <p>System: @contractType <i>(status: @contract.Status)</i></p>
+                        </div>
+                        <!--hidden field used to get current Contract ID-->
+                        <input type="hidden" id="contractId" name="contractId" value="@contract.ContractId" />
+                        <!--Map-->
+                        <div class="row-fluid small-map">
+                            @Html.Partial("mapPartial")
+                        </div>
+                        <div class="form-actions">
+                            @Html.ActionLink("Edit", "Edit", new { id = contract.ContractId }, new { @class = "btn btn-primary" })                            
+                            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn" })
+                            @Html.ActionLink("Delete", "Delete", new { id = contract.ContractId }, new { @class = "btn btn-danger pull-right", title="Delete this contract" })
+                        </div>
+                    </fieldset>
+                </div>
+                <!--Drawing-->
+                <div class="well">
+                    <fieldset><legend>Available drawing(s)</legend>
+                        <p>
+                            @Html.ActionLink("Add a drawing", "Create", "Drawing",
+                            new { contractId = contract.ContractId },
+                            new { @class = "btn btn-primary" })
+                        </p>
+                        <p>@drawings.TotalItemCount Drawings found. <span>Showing 10 per page.</span></p>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <td>ID # </td>
+                                    <td>Page </td>
+                                    <td>File Name </td>
+                                    <td>Plan </td>
+                                    <td>Detail </td>
+                                    <td>Cross Section </td>
+                                    <td>Profile </td>
+                                    <td>Elevation </td>
+                                    <td>Location of Valve </td>
+                                    <td></td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    //render table of drawing here
+                                    foreach (var drawing in drawings) {
+                                    <tr>
+                                        <td>
+                                            @Html.ActionLink(drawing.DrawingId.ToString(),
+                                                             "Detail",
+                                                             "Drawing",
+                                                             new { id = drawing.DrawingId },
+                                                             null)
+                                        </td>
+                                        <td>@drawing.SheetNumber</td>
+                                        <td>@drawing.FileName</td>
+                                        <td>
+                                            @{ var plan = drawing.Plan ? "Yes" : "";}@plan
+                                        </td>
+                                        <td>
+                                            @{ var detail = drawing.Detail ? "Yes" : "";}@detail
+                                        </td>
+                                        <td>
+                                            @{ var crossSec = drawing.CrossSection ? "Yes" : "";}@crossSec
+                                        </td>
+                                        <td>
+                                            @{var profile = drawing.Profile ? "Yes" : "";}@profile
+                                        </td>
+                                        <td>
+                                            @{ var elevation = drawing.Elevation ? "Yes" : "";}@elevation
+                                        </td>
+                                        <td>
+                                            @{ var lov = drawing.LocationOfValve ? "Yes" : "";}@lov
+                                        </td>
+                                        <td>
+                                            <a href="@Url.Action("Detail", "Drawing", new { Id = drawing.DrawingId })" 
+                                                class="btn btn-primary btn-mini" title="More detail">
+                                                Detail
+                                            </a>
+                                            |
+                                            <a href="@Url.Action("Edit", "Drawing", new { Id = drawing.DrawingId })" 
+                                                class="btn btn-primary btn-mini" title="Update">
+                                                Update
+                                            </a>
+                                            |
+                                            <a href="@Url.Action("Delete", "Drawing", new { Id = drawing.DrawingId })" 
+                                                class="btn btn-primary btn-mini btn-danger" 
+                                                title="Delete this drawing. You will confirm delete on the next page">
+                                                Delete
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    }  
+                    
+                                }
+                            </tbody>
+                        </table>
+                        <div class="row-fluid">
+                            <div class="drawingPageIndex">
+                                @Html.Partial("contractPagingPartial", Model, new ViewDataDictionary() { { "currentViewBag", ViewBag } })
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+<!--base app structure code-->
+<script src="@Url.Content("~/Scripts/ESRGC/Script.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/ESRGC/component.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/ESRGC/Application/application.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/ESRGC/Controller/base.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/ESRGC/Model/base.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/ESRGC/Store/base.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/ESRGC/toolItem.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/ESRGC/toolbar.js")" type="text/javascript"></script>
+<!--openlayer map code-->
+<script src="@Url.Content("~/Scripts/Map/Openlayers/OLClickControl.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/Map/Openlayers/mapControl.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/Map/Openlayers/baseScript.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/Map/Openlayers/iMapViewer.js")" type="text/javascript"></script>
+<!--app custom code-->
+<script src="@Url.Content("~/Contract/Detail/app/controller/map.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Contract/Detail/app/controller/contract.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Contract/Detail/app/store/contract.js")" type="text/javascript"></script>
+<!--map configuration-->
+<script src="@Url.Content("~/Contract/Detail/configurationOL.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Contract/Detail/app.js")" type="text/javascript"></script>
+<script type="text/javascript">
+    $(function () {
+        new ESRGC.App();
+    });
+</script>

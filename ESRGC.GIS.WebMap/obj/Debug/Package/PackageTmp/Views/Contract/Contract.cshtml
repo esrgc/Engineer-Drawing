@@ -1,0 +1,175 @@
+﻿@model ESRGC.GIS.WebMap.Models.ContractData
+@if (false)
+{ 
+    <script src="../../Scripts/jquery-1.7.1.min.js" type="text/javascript"></script>
+    <script src="../../Scripts/bootstrap.min.js" type="text/javascript"></script>
+}
+@*Contract details go here*@
+@{ var contract = Model.Contract; var drawings = Model.Drawings; }
+<div class="resultContent" id="contract">
+    @if (contract != null)
+    {
+        <div class="row-fluid">
+            <div class="span12 well">
+            @Html.Partial("messagePartial")
+                <div class="leftContent">
+                    <h1>
+                        Contract</h1>
+                    <p>
+                        Number: <strong>@contract.ContractNum</strong></p>
+                    <input type="hidden" value="@contract.ContractId" id="currentContractId" />
+                    @{
+                        var contractType = "";
+                        if (contract.StormWater) { contractType = "Storm Water"; }
+                        else if (contract.Water) { contractType = "Water"; }
+                        else if (contract.Sanitary) { contractType = "Sanitary"; }
+                    }
+                    <p>
+                        System: @contractType <i>(status: @contract.Status)</i></p>
+                </div>
+                <div class="rightContent">
+                    @Html.Partial("contractSearchFrmPartial", 
+                        new ViewDataDictionary() { 
+                            {"formId", "contract-search"}
+                        })
+                </div>
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div class="span12 well">
+                <h3>Drawing List</h3>
+                <p>@drawings.TotalItemCount Drawings found. <span>Showing </span>
+                    <input type="hidden" value="@drawings.PageNumber" id="currentPageNumber"/>
+                    <select class="pageSizeSelect">
+                        @{
+                            for (int i = 5; i <= 50; i *= 2)
+                            {
+                                if (i == drawings.PageSize)
+                                {
+                                    <option value="@i" selected="selected">@i</option>
+                                }
+                                else
+                                {
+                                    <option value="@i">@i</option>
+                                }
+                            }    
+                        }
+                    </select>
+                    <span>per page.</span>
+                </p>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <td>
+                            </td>
+                            <td>
+                                ID #
+                            </td>
+                            <td>
+                                Page
+                            </td>
+                            <td>
+                                File Name
+                            </td>
+                            <td>
+                                Last Revised
+                            </td>
+                            <td>
+                                Last Scanned
+                            </td>
+                            <td>
+                                Plan
+                            </td>
+                            <td>
+                                Detail
+                            </td>
+                            <td>
+                                Cross Section
+                            </td>
+                            <td>
+                                Profile
+                            </td>
+                            <td>
+                                Elevation
+                            </td>
+                            <td>
+                                Location of Valve
+                            </td>
+                            <td>
+                                Paper W & H
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            //render table of drawing here
+                            foreach (var drawing in drawings)
+                            {
+                                <tr>
+                                    <td>
+                                        <button name="openDrawing" value="@drawing.DrawingId"
+                                                class="btn btn-small btn-primary">Open</button>
+                                    </td>
+                                    <td>@drawing.DrawingId</td>
+                                    <td>@drawing.SheetNumber</td>
+                                    <td>@drawing.FileName</td>
+                                    <td>
+                                        @{ 
+                                            var lastRevised = drawing.DateLastRevised.HasValue ?
+                                                drawing.DateLastRevised.Value.ToShortDateString() :
+                                                "N/A"; 
+                                        }
+                                        @lastRevised
+                                    </td>
+                                    <td>@drawing.DateLastIndexed</td>
+                                    <td>@{ var plan = drawing.Plan ? "Yes" : "";}@plan</td>
+                                    <td>@{ var detail = drawing.Detail ? "Yes" : "";}@detail</td>
+                                    <td>@{ var crossSec = drawing.CrossSection ? "Yes" : "";}@crossSec</td>
+                                    <td>@{var profile = drawing.Profile ? "Yes" : "";}@profile</td>
+                                    <td>@{ var elevation = drawing.Elevation ? "Yes" : "";}@elevation</td>
+                                    <td>@{ var lov = drawing.LocationOfValve ? "Yes" : "";}@lov</td>
+                                    <td>@drawing.PaperWidth (W) x @drawing.PaperHeight (H)</td>
+                                </tr>
+        }  
+                    
+                        }
+                    </tbody>
+                </table>
+                <div class="row-fluid">
+                    <div class="drawingPageIndex">
+                        @Html.Partial("contractPagingPartial", Model, new ViewDataDictionary() { { "currentViewBag", ViewBag } })
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="row-fluid">
+            <div class="span12 well">
+                <div class="leftContent">
+                    <h1>Contract</h1>
+                    <p>
+                        No contract data.
+                    </p>
+                </div>
+                <div class="rightContent">
+                    @Html.Partial("contractSearchFrmPartial", new ViewDataDictionary() { 
+                            {"formId", "contract-search"},
+                            {"contractNum", ViewBag.ContractNum}
+                    })
+                </div>
+            </div>
+        </div>
+    }
+    <div class="row-fluid">
+        <div class="span12 well">
+            <p>
+                <a href="#gotoMap" class="btn btn-primary btn-large"><i class="icon-map-marker icon-white">
+                </i> Back to map </a>
+                <a href="#gotoDrawing" class="btn btn-primary btn-large"><i class="icon-picture icon-white">
+                </i> Go to drawing</a>
+            </p>
+        </div>
+    </div>
+</div>

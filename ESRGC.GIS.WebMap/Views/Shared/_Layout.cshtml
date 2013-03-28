@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title</title>
+    <!--js plugins and external css-->
+    @*<link rel="Shortcut Icon" type="image/jpg" href="@Url.Content("~/Content/images/favicon.jpg")"/>*@
+    <link href="@Url.Content("~/Content/bootstrap/css/bootstrap.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/bootstrap/css/bootstrap-responsive.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/jqueryUI/jquery-ui-1.8.18.custom.css")" rel="stylesheet"type="text/css" />
+    <!--app related css-->
+    <link href="@Url.Content("~/Content/olCustomStyle.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/toolbar/toolbarStyle.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/appStyle.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/mapStyle.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/iviewer/jquery.iviewer.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/jqueryImageSelect/imgareaselect-animated.css")" rel="stylesheet"
+        type="text/css" />
+    <!--libraby and plugins-->
+    <script src="@Url.Content("~/Scripts/modernizr-1.7.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/JQuery/jquery-1.7.1.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/JQuery/jquery-ui-1.8.18.custom.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/JQuery/jquery.validate.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/JQuery/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/TwitterBootstrap/bootstrap.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/JQueryPlugins/IViewer/jquery.iviewer.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/JQueryPlugins/IViewer/jquery.mousewheel.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/JQueryPlugins/jquery.jqprint-0.3.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/JQueryPlugins/jqueryImageSelect/jquery.imgareaselect.min.js")"
+        type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/Map/Openlayers/src/OpenLayers.js")" type="text/javascript"></script>
+    @*<script src="http://openlayers.org/dev/OpenLayers.js" type="text/javascript"></script>*@
+    
+</head>
+<body>  
+    <div class="page-header">
+        @*<img id="pageLogo" class="appLogo" src="@Url.Content("~/Content/images/publicWorkLogo.jpg")" alt="CityLogo" />*@
+        
+        <div id="pageDescription">            
+            <h1>Department of Public Works</h1>            
+            <h4>&nbsp;&nbsp;&nbsp;&nbsp;Engineering Drawing (Demo version)</h4>            
+        </div>
+        <div class="clear"></div>
+    </div>       
+    @RenderBody()
+    <div class="pageFooter">
+        <div class="footerLogoContainer">
+            @*<img id="cityLogo" class="appLogo" src="@Url.Content("~/Content/images/salisburyCityLogo.jpg")"/>*@
+            <img class="appLogo" src="@Url.Content("~/Content/images/esrgclogo.jpg")" /> 
+        </div>        
+    </div>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+

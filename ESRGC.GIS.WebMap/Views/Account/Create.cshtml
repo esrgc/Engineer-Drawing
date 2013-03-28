@@ -1,0 +1,67 @@
+﻿@model ESRGC.GIS.WebMap.Models.RegisterModel
+@{
+    ViewBag.Title = "Salisbury City - Member Manager";
+}
+<div class="mainContainer container-fluid">
+    <div class="row-fluid">
+        <!--Navigation-->
+        <div class="span3">
+            @Html.Partial("adminNavPartial", new ViewDataDictionary() { { "memberCss", "active" } })
+        </div>
+        <!--Page content-->
+        <div class="span9">
+            <section id="members">
+                <ul class="breadcrumb">
+                    <li><a href="@Url.Action("Index", "Admin")">Home</a> <span class="divider">/</span></li>
+                    <li><a href="@Url.Action("Index", "Account")">Membership</a> <span class="divider">/</span></li>
+                    <li class="active">Create Member</li>
+                </ul>
+                <div class="well">
+                    @using (Html.BeginForm("Create", "Account", FormMethod.Post, new { @class="form-horizontal"})) {
+                        @Html.ValidationSummary(true)
+                        <fieldset>
+                            <legend>Create new user</legend>
+                            <div class="control-group">
+                                <label class="control-label" for="UserName">Username</label>
+                                <div class="controls">
+                                    @Html.EditorFor(model => model.UserName)
+                                    @Html.ValidationMessageFor(model => model.UserName, null, new { @class = "help-inline" })
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="Email">Email</label>
+                                <div class="controls">
+                                    @Html.EditorFor(model => model.Email)
+                                    @Html.ValidationMessageFor(model => model.Email, null, new { @class = "help-inline" })
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="Password">Password</label>
+                                <div class="controls">
+                                    @Html.EditorFor(model => model.Password)
+                                    @Html.ValidationMessageFor(model => model.Password, null, new { @class = "help-inline" })
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="ConfirmPassword">Confirm password</label>
+                                <div class="controls">
+                                    @Html.EditorFor(model => model.ConfirmPassword)
+                                    @Html.ValidationMessageFor(model => model.ConfirmPassword, null, new { @class = "help-inline" })
+                                </div>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <input type="submit" value="Create" class="btn btn-primary"/>
+                                @Html.ActionLink("Back to List", "Index", null, new { @class = "btn"})
+                            </div>
+                        </fieldset>
+                    }
+
+                    <div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+

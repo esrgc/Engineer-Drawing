@@ -1,0 +1,34 @@
+﻿@{ 
+    var collection = ViewData["Collection"] as PagedList.IPagedList;
+    var ViewBag = ViewData["viewBag"] as dynamic;
+}
+<div>
+    Page @(collection.PageCount < collection.PageNumber ? 0 : collection.PageNumber)
+    of @collection.PageCount
+    &nbsp;
+    @if (collection.HasPreviousPage)
+    {
+        @Html.ActionLink("<<", "Index", new { page = 1, currentFilter = ViewBag.CurrentFilter })
+        @Html.Raw("&nbsp;");
+        @Html.ActionLink("< Prev", "Index", new { page = collection.PageNumber - 1, currentFilter = ViewBag.CurrentFilter })
+    }
+    else
+    {
+        @:<<
+        @Html.Raw("&nbsp;");
+        @:< Prev
+    }
+    &nbsp;
+    @if (collection.HasNextPage)
+    {
+        @Html.ActionLink("Next >", "Index", new { page = collection.PageNumber + 1, currentFilter = ViewBag.CurrentFilter })
+        @Html.Raw("&nbsp;");
+        @Html.ActionLink(">>", "Index", new { page = collection.PageCount, currentFilter = ViewBag.CurrentFilter })
+    }
+    else
+    {
+        @:Next >
+        @Html.Raw("&nbsp;")
+        @:>>
+    }
+</div>

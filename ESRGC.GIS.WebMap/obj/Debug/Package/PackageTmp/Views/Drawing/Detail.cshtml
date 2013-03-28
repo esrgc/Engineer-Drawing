@@ -1,0 +1,150 @@
+﻿@model ESRGC.GIS.WebMap.Models.DrawingData
+@{
+    ViewBag.Title = "Salisbury City - Drawing detail";
+}
+<div class="mainContainer container-fluid">
+    <div class="row-fluid">
+        <!--Navigation-->
+        <div class="span3">
+            @Html.Partial("adminNavPartial", new ViewDataDictionary() { { "contractCss", "active" } })
+        </div>
+        <!--Page content-->
+        <div class="span9">
+            <section id="Home">
+                <ul class="breadcrumb">
+                    <li>
+                        <a href="@Url.Action("Index", "Admin")">Home</a>
+                        <span class="divider">/</span></li>
+                    <li>
+                        <a href="@Url.Action("Index", "Contract")">Contracts and drawings</a>
+                        <span class="divider">/</span></li>
+                    <li>
+                        <a href="@Url.Action("Detail", "Contract", new { id = Model.Contract.ContractId })">
+                            Contract @Model.Contract.ContractNum</a><span class="divider">/</span>
+                    </li>
+                    <li class="active">Drawing detail</li>
+                </ul>
+                <div class="well">
+                    @if (Model != null) { 
+                        <fieldset><legend>Drawing detail</legend>
+                            @Html.Partial("messagePartial")
+                            <div class="row-fluid">
+                                <div class="span12">
+                                    <div id="drawing-image">
+                                        @Html.HiddenFor(x => x.ImageUrl)
+                                        <strong>Loading drawing image...</strong>
+                                        <img src="@Url.Content("~/Desktop/resources/images/ajax-loader-fb.gif")" alt="" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row-fluid">
+                                <table class="table">
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>Id</strong> </td>
+                                            <td>@Model.Drawing.DrawingId</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Path</strong></td>
+                                            <td>@Model.Drawing.FilePath.Path</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>File name </strong></td>
+                                            <td>@Model.Drawing.FileName</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Sheet No.</strong></td>
+                                            <td>@Model.Drawing.SheetNumber</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>As Built</strong></td>
+                                            <td>@Model.Drawing.AsBuilt</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Book</strong></td>
+                                            <td>@Model.Drawing.Book</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Page</strong></td>
+                                            <td>@Model.Drawing.Page</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Plan</strong></td>
+                                            <td>@Model.Drawing.Plan</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Detail</strong></td>
+                                            <td>@Model.Drawing.Detail</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Cross section</strong></td>
+                                            <td>@Model.Drawing.CrossSection</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Profile</strong></td>
+                                            <td>@Model.Drawing.Profile</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Elevation</strong></td>
+                                            <td>@Model.Drawing.Elevation</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Location of valve</strong></td>
+                                            <td>@Model.Drawing.LocationOfValve</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Last revised</strong></td>
+                                            <td>@Model.Drawing.DateLastRevised</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Last scanned</strong></td>
+                                            <td>@Model.Drawing.DateLastIndexed</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Rescan</strong></td>
+                                            <td>@Model.Drawing.Rescan</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Paper width</strong></td>
+                                            <td>@Model.Drawing.PaperWidth (in)</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Paper height</strong></td>
+                                            <td>@Model.Drawing.PaperHeight (in)</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </fieldset>
+                        <a class="btn btn-primary" title="Update image detail or upload a new image"
+                        href="@Url.Action("Edit", new { id = Model.Drawing.DrawingId })">
+                            Update detail</a> 
+                        <a class="btn" href="@Url.Action("Detail", "Contract", new { id = Model.Contract.ContractId })">
+                            Back to contract</a>
+                        <a href="@Url.Action("Delete", "Drawing", new { Id = Model.Drawing.DrawingId })" 
+                                                class="btn btn-primary btn-danger pull-right" 
+                                                title="Delete this drawing. You will confirm delete on the next page">
+                                                Delete
+                                            </a>
+                    }
+                    else {
+                        Html.RenderPartial("messagePartial");
+                    }
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        //create drawing image
+        var img = $(document.createElement('img'));
+        img.addClass('img-polaroid');
+        img.on('load', function (event, object) {
+            var container = $('div #drawing-image');
+            container.empty();
+            container.append(this);
+        });
+        img.attr('src', $('#ImageUrl').val());
+    });
+</script>

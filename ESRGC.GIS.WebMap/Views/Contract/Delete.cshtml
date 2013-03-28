@@ -1,0 +1,79 @@
+﻿@model ESRGC.GIS.Domain.Model.Contract
+@{
+    ViewBag.Title = "Delete";
+}
+<div class="mainContainer container-fluid">
+    <div class="row-fluid">
+        <!--Navigation-->
+        <div class="span3">
+            @Html.Partial("adminNavPartial", new ViewDataDictionary() { { "ContractCss", "active" } })
+        </div>
+        <!--Page content-->
+        <div class="span9">
+            <section id="Contract">
+                <ul class="breadcrumb">
+                    <li>
+                        <a href="@Url.Action("Index", "Admin")">
+                            Home</a>
+                        <span class="divider">/</span>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index", "Contract")">
+                            Contracts and drawings</a>
+                        <span class="divider">/</span>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("detail", new { id = Model.ContractId })">
+                            Contract <strong>@Model.ContractNum</strong>
+                        </a>
+                        <span class="divider">/</span>
+                    </li>
+                    <li class="active">Delete</li>
+                </ul>
+                <div class="alert">
+                    <h3>Are you sure you want to delete this?</h3>
+                    @using (Html.BeginForm("Delete", "Contract", FormMethod.Post, new { @class= "form-horizontal"})) {
+                        @Html.HiddenFor(x => x.ContractId)
+                        <fieldset>
+                            <legend>Contract <strong>"@Model.ContractNum"</strong></legend>
+                            <div class="control-group">
+                                <label class="control-label">Storm Water</label>
+                                <div class="controls">
+                                    @Html.DisplayFor(x => x.StormWater)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Sanitary</label>
+                                <div class="controls">
+                                    @Html.DisplayFor(x => x.Sanitary)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Water</label>
+                                <div class="controls">
+                                    @Html.DisplayFor(x => x.Water)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Delete drawings?</label>
+                                <div class="controls">
+                                    <ul>
+                                        @foreach (string drawingFile in ViewBag.DrawingFiles) { 
+                                            <li>@drawingFile</li>
+                                        }
+                                    </ul>
+                                    <input type="checkbox" name="deleteDrawing" id="deleteDrawing" value="true"/>
+                                    <span class="help-inline"><strong>Check this box to delete all drawings that are associated with this contract</strong></span>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <div class="form-actions">
+                            <input type="submit" value="Delete" class="btn btn-danger" />
+                            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn"})
+                        </div>
+                    }
+                </div>
+            </section>
+        </div>
+    </div>
+</div>

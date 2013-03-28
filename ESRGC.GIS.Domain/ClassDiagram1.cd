@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="ESRGC.GIS.Domain.Contexts.CriticalArea.PropertySearch">
+    <Position X="0.75" Y="4.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Contexts\CritcalArea\PropertySearch.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ESRGC.GIS.Domain.DAL.Concrete.ManifoldRepository" BaseTypeListCollapsed="true">
+    <Position X="8" Y="2.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAABAAAAAAAAAAAAAAAAEAAAQAAAAEAAAAAAAA=</HashCode>
+      <FileName>DAL\Concrete\ManifoldRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ESRGC.GIS.Domain.DAL.Services.DataManager">
+    <Position X="10.75" Y="2.25" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAQQEAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>DAL\Services\DataManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ESRGC.GIS.Domain.DAL.Services.Manifold.DataProcessor">
+    <Position X="1" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAEBAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DAL\Services\Manifold\DataProcessor.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ESRGC.GIS.Domain.Helpers.HelperClass">
+    <Position X="8.5" Y="0.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Helpers\HelperClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ESRGC.GIS.Domain.Model.Geometry.GeoBase">
+    <Position X="6.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAAAAAAAAAAQAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Model\Geometry\GeoBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ESRGC.GIS.Domain.Model.Geometry.QueryData">
+    <Position X="4.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Geometry\QueryData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ESRGC.GIS.Domain.WorkUnits.Concrete.CriticalAreaWorkUnit" BaseTypeListCollapsed="true">
+    <Position X="4.5" Y="5" Width="2.5" />
+    <AssociationLine Name="PropertySearch" Type="ESRGC.GIS.Domain.Contexts.CriticalArea.IPropertySearch" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="5.75" Y="6.555" />
+        <Point X="5.75" Y="7.5" />
+        <Point X="3.5" Y="7.5" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAQAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>WorkUnits\Concrete\CriticalAreaWorkUnit.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_propertySearch" />
+      <Property Name="PropertySearch" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ESRGC.GIS.Domain.Contexts.ContextBase">
+    <Position X="0.75" Y="2.25" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Contexts\ContextBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="ESRGC.GIS.Domain.Contexts.CriticalArea.IPropertySearch">
+    <Position X="0.75" Y="6.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Contexts\CritcalArea\IPropertySearch.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ESRGC.GIS.Domain.DAL.Abstract.IEntitiesRepository">
+    <Position X="5" Y="2.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>DAL\Abstract\IEntitiesRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ESRGC.GIS.Domain.DAL.Services.Manifold.IGeometryProcessor&lt;T&gt;">
+    <Position X="12" Y="0.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAEBAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DAL\Services\Manifold\IGeometryProcessor.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ESRGC.GIS.Domain.WorkUnits.Abstract.ICriticalAreaWorkUnit">
+    <Position X="7.75" Y="5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>WorkUnits\Abstract\ICriticalAreaWorkUnit.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

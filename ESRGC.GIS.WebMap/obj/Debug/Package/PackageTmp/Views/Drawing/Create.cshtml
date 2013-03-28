@@ -1,0 +1,160 @@
+﻿@model ESRGC.GIS.Domain.Model.Drawing
+@{
+    ViewBag.Title = "Create drawing";
+}
+<div class="mainContainer container-fluid">
+    <div class="row-fluid">
+        <!--Navigation-->
+        <div class="span3">
+            @Html.Partial("adminNavPartial", new ViewDataDictionary() { { "ContractCss", "active" } })
+        </div>
+        <!--Page content-->
+        <div class="span9">
+            <section id="Contract">
+                <ul class="breadcrumb">
+                    <li>
+                        <a href="@Url.Action("Index", "Admin")">
+                            Home</a>
+                        <span class="divider">/</span>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index", "Contract")">
+                            Contracts and drawings</a>
+                        <span class="divider">/</span>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Detail", "Contract", new { Id = ViewBag.ContractId })">
+                            Contract @ViewBag.ContractNum</a>
+                        <span class="divider">/</span>
+                    </li>
+                    <li class="active">
+                        Create drawing</li>
+                </ul>
+                <div class="well">
+                    @using (Html.BeginForm("Create", "Drawing", FormMethod.Post,
+                        new { @class = "form-horizontal", enctype = "multipart/form-data" })) {
+                        @Html.ValidationSummary(true)
+                        <fieldset>
+                            <legend>Drawing</legend>
+                            <div class="control-group">
+                                <label class="control-label" for="SheetNumber">Sheet No.</label>
+                                <div class="controls">
+                                    @Html.EditorFor(model => model.SheetNumber)
+                                    @Html.ValidationMessageFor(model => model.SheetNumber)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="AsBuilt">As Built</label>
+                                <div class="controls">
+                                    @Html.EditorFor(model => model.AsBuilt)
+                                    @Html.ValidationMessageFor(model => model.AsBuilt)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="Book">Book</label>
+                                <div class="controls">
+                                    @Html.EditorFor(model => model.Book)
+                                    @Html.ValidationMessageFor(model => model.Book)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="Page">Page</label>
+                                <div class="controls">
+                                    @Html.EditorFor(model => model.Page)
+                                    @Html.ValidationMessageFor(model => model.Page)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="Plan">Plan</label>
+                                <div class="controls">
+                                    @Html.EditorFor(model => model.Plan)
+                                    @Html.ValidationMessageFor(model => model.Plan)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="Detail">Detail</label>
+                                <div class="controls">
+                                    @Html.EditorFor(model => model.Detail)
+                                    @Html.ValidationMessageFor(model => model.Detail)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="CrossSection">Cross Section</label>
+                                <div class="controls">
+                                    @Html.EditorFor(model => model.CrossSection)
+                                    @Html.ValidationMessageFor(model => model.CrossSection)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="Profile">Profile</label>
+                                <div class="controls">
+                                    @Html.EditorFor(model => model.Profile)
+                                    @Html.ValidationMessageFor(model => model.Profile)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="Elevation">Elevation</label>
+                                <div class="controls">
+                                    @Html.EditorFor(model => model.Elevation)
+                                    @Html.ValidationMessageFor(model => model.Elevation)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="LocationOfValve">LOV</label>
+                                <div class="controls">
+                                    @Html.EditorFor(model => model.LocationOfValve)
+                                    @Html.ValidationMessageFor(model => model.LocationOfValve)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="DateLastRevised">Last Revised</label>
+                                <div class="controls">
+                                    @Html.EditorFor(model => model.DateLastRevised)
+                                    @Html.ValidationMessageFor(model => model.DateLastRevised)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="Rescan">Rescan</label>
+                                <div class="controls">
+                                    @Html.EditorFor(model => model.Rescan)
+                                    @Html.ValidationMessageFor(model => model.Rescan)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="PaperWidth">Paper width</label>
+                                <div class="controls">
+                                    @Html.EditorFor(x => x.PaperWidth) <span>(in)</span>
+                                    @Html.ValidationMessageFor(x => x.PaperWidth)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="PaperHeight">Paper height</label>
+                                <div class="controls">
+                                    @Html.EditorFor(x => x.PaperHeight) <span>(in)</span>
+                                    @Html.ValidationMessageFor(x => x.PaperHeight)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Upload drawing image</label>
+                                <div class="controls">
+                                    <input type="file" name="drawingImage" id="drawingImage" />
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <input type="submit" value="Create" class="btn btn-primary" />
+                                @Html.ActionLink("Back to contract", "Detail", "Contract", new { Id = ViewBag.ContractId }, new { @class = "btn" })
+                            </div>
+                        </fieldset>
+                        <input type="hidden" name="contractId" value="@ViewBag.ContractId"/>
+                    }
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $('#DateLastRevised').datepicker();
+    })
+</script>

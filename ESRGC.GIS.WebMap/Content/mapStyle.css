@@ -1,0 +1,164 @@
+﻿/*Elements*/
+
+#mapContainer p { clear: both; margin: 10px; }
+#mapContainer img { max-width: none;}
+
+em { font-weight: bold; padding-right: 1em; vertical-align: top; }
+#mapContainer form input select
+{
+	display: block;
+	padding: 2px;
+	margin: 5px 0;
+	clear: both;
+}
+#searchTabs fieldset
+{
+	margin: 0;	
+	padding: 10px;
+}
+
+/*IDs*/
+#mapContainer
+{
+	position: relative; /*makes every child element's position absolute to this container*/
+	width: 100%;
+	height: 100%;
+}
+#searchLoader 
+{
+	margin: 0 auto;
+}
+
+/*ajax loader*/
+#ajaxLoader
+{
+	width: auto;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+	filter: alpha(opacity=100); /* for IE */
+	opacity: 1; /* CSS3 standard */
+	padding: 5px;
+}
+
+#footer
+{
+	left: 0;
+	bottom: 5px;
+	margin: auto;
+}
+#statusBar
+{
+	/*width: 300px;*/
+	margin: 0 auto;
+	display: inline-block;
+	text-align:left;
+}
+#statusUI
+{
+	text-align: center;
+	font-family: Arial;
+	font-weight: bold;
+	padding: 5px;
+	width: 60%;
+}
+div#map
+{
+	/*width:1000px; 	height: 800px;*/
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+
+/*Classes*/
+
+/*--logo--*/
+div .logo
+{
+	position: absolute;
+	bottom: 0;
+	left: 5px;
+	width: 100px;
+	height: 25px;
+	z-index: 1000;
+	border: none;
+}
+/*
+	absolute position so it can be laid on top of the map
+	and has opacity set to .8
+*/
+.overlay
+{
+	display: inline-block;
+	position: absolute;
+	z-index: 999;
+	filter: alpha(opacity=85); /* for IE */
+	opacity: 0.85; /* CSS3 standard */
+}
+
+/*MAP container classes*/
+.small-map { height: 450px;  width: 100%; }
+.medium-map { height: 650px; width: 100%; }
+.large-map { height: 800px; width: 100%; }
+.full-map { height: 100%; width: 100%; }
+/*bottom aligned for overlays*/
+.centerAlign { text-align: center; }
+.bottom
+{
+	bottom: 5px;
+	left: 0;
+	right: 0;	
+}
+.top
+{
+	height: auto;
+	top: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+}
+.left 
+{
+	left: 5px;
+	top: 0;
+	bottom: 0;
+	right: 0;
+}
+
+#statusBar .statusElement
+{
+	/*float: left; 	display: inline;*/
+	width: auto;
+	margin-top: 5px;
+}
+.toolContainer
+{
+	border-radius: 15px;
+	padding: 10px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	margin-right: auto;
+	margin-left: auto;
+	width: 400px;
+	height: 80%;
+}
+
+.toolLabel
+{
+	border: 0;
+	color: #f6931f;
+	font-weight: bold;
+	width: 80%;
+}
+
+.toolSubmit
+{
+	width: 100px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 5px;
+}
+
+.icon { cursor: pointer; width: 30px; height: 30px; border: 1px solid gray;}

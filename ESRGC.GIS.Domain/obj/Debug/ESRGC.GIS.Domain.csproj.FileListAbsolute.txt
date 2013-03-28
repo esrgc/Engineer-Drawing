@@ -1,0 +1,11 @@
+D:\Documents\Projects\Publicworks\EngineerDrawing-Demo\ESRGC.GIS.Domain\bin\Debug\ESRGC.GIS.Domain.dll.config
+D:\Documents\Projects\Publicworks\EngineerDrawing-Demo\ESRGC.GIS.Domain\bin\Debug\ESRGC.GIS.Domain.dll
+D:\Documents\Projects\Publicworks\EngineerDrawing-Demo\ESRGC.GIS.Domain\bin\Debug\ESRGC.GIS.Domain.pdb
+D:\Documents\Projects\Publicworks\EngineerDrawing-Demo\ESRGC.GIS.Domain\bin\Debug\EntityFramework.dll
+D:\Documents\Projects\Publicworks\EngineerDrawing-Demo\ESRGC.GIS.Domain\bin\Debug\ESRGCDataGeometry.dll
+D:\Documents\Projects\Publicworks\EngineerDrawing-Demo\ESRGC.GIS.Domain\bin\Debug\ESRGCManifoldWrapper.dll
+D:\Documents\Projects\Publicworks\EngineerDrawing-Demo\ESRGC.GIS.Domain\bin\Debug\EntityFramework.xml
+D:\Documents\Projects\Publicworks\EngineerDrawing-Demo\ESRGC.GIS.Domain\obj\Debug\ResolveAssemblyReference.cache
+D:\Documents\Projects\Publicworks\EngineerDrawing-Demo\ESRGC.GIS.Domain\obj\Debug\ESRGC.GIS.Domain.csproj.ResolveComReference.cache
+D:\Documents\Projects\Publicworks\EngineerDrawing-Demo\ESRGC.GIS.Domain\obj\Debug\ESRGC.GIS.Domain.dll
+D:\Documents\Projects\Publicworks\EngineerDrawing-Demo\ESRGC.GIS.Domain\obj\Debug\ESRGC.GIS.Domain.pdb

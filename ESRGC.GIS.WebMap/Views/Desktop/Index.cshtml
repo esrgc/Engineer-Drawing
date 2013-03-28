@@ -1,0 +1,205 @@
+﻿@{
+    ViewBag.Title = "Engineer Drawing Demo";
+}
+
+@section scripts {
+    <!--base app structure code-->
+    <script src="@Url.Content("~/Scripts/ESRGC/Script.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/ESRGC/component.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/ESRGC/Application/application.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/ESRGC/toolItem.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/ESRGC/toolbar.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/ESRGC/Controller/base.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/ESRGC/Model/base.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/ESRGC/Store/base.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/ESRGC/Store/mdImapGeocoder.js")" type="text/javascript"></script>
+    <!--openlayer map code-->
+    <script src="../Scripts/Map/Openlayers/OLClickControl.js" type="text/javascript"></script>
+    <script src="../Scripts/Map/Openlayers/mapControl.js" type="text/javascript"></script>
+    <script src="../Scripts/Map/Openlayers/baseScript.js" type="text/javascript"></script>
+    <script src="../Scripts/Map/Openlayers/iMapViewer.js" type="text/javascript"></script>
+    <script src="../Scripts/Map/Openlayers/customDrawFeature.js" type="text/javascript"></script>
+    <!--app custom code-->
+    <script src="app/controller/home.js" type="text/javascript"></script>
+    <script src="app/controller/map.js" type="text/javascript"></script>
+    <script src="app/controller/contract.js" type="text/javascript"></script>
+    <script src="app/controller/searchFilter.js" type="text/javascript"></script>
+    <script src="app/controller/drawing.js" type="text/javascript"></script>
+    <script src="app/model/contract.js" type="text/javascript"></script>
+    <script src="app/store/contractPolygon.js" type="text/javascript"></script>
+    <script src="app/store/contractByGeom.js" type="text/javascript"></script>
+    <script src="app/store/contract.js" type="text/javascript"></script>
+    <script src="app/store/drawingById.js" type="text/javascript"></script>
+    <script src="app/store/partialDrawing.js" type="text/javascript"></script>
+    <script src="app/store/account.js" type="text/javascript"></script>
+    <script src="app/view/home.js" type="text/javascript"></script>
+    <!--map configuration-->
+    <script src="configurationOL.js" type="text/javascript"></script>        
+    <script src="app.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        var app = null;
+        $(function () {
+            new ESRGC.App();
+        });
+    </script>
+}
+
+    <div class="container-fluid">
+        <!--main layout-->
+        <div class="row-fluid">
+            <div class="span12">
+                <ul id="navigationTab" class="nav nav-tabs">
+                    <li class="active" ><a href="#homeTab" data-toggle="tab"><i class="icon-home"></i> Home</a></li>
+                    <li><a href="#mapTab" data-toggle="tab"><i class="icon-map-marker"></i> Map</a></li>
+                    <li><a href="#contractTab" data-toggle="tab"><i class="icon-file"></i> Contract</a></li>
+                    <li><a href="#drawingTab" data-toggle="tab"><i class="icon-picture"></i> Drawing</a></li>
+                </ul>
+                <div class="tab-content">
+                  <div class="tab-pane active" id="homeTab">
+                    <div class="tabPaneContainer">
+                        <div class="hero-unit">
+                            <h1><small>Engineering Drawing</small></h1>
+                            <fieldset>
+                                <legend>Find contracts <a id="home-map-btn" href="#gotoMap" class="btn btn-primary"
+                                    rel="tooltip" data-placement="right" data-original-title="Search for contracts using map">
+                                    <i class="icon-map-marker icon-white"></i>Map </a></legend>
+                                    <div>@Html.Partial("contractSearchFrmPartial", new ViewDataDictionary() { { "formId", "home-contract-search" } })</div>
+                            </fieldset>
+                            <fieldset>
+                                <legend>Application Management <span class="label label-important">Login required</span></legend>
+                                @Html.Action("logOn", "Account")
+                            </fieldset>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane " id="mapTab">
+                    <div id="mapContent" class="tabPaneContainer">
+                        <div class="row-fluid">
+                            <div class="span8 well medium-map">
+                                @Html.Partial("mapPartial")
+                            </div>
+                            <div id="infoSection" class="span4 well">
+                                <div class="accordion" id="accContainer">
+                                    <div class="accordion-group">
+                                        <div class="accordion-heading">
+                                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accContainer" href="#acc0">
+                                                <i class="icon-screenshot"></i> Locate address
+                                            </a>
+                                        </div>
+                                        <div id="acc0" class="accordion-body collapse in">
+                                            <div class="accordion-inner">
+                                                <form id="locateAddressFrm" action="#">
+                                                    <div class="control-group" id="addressInputCnt">
+                                                        <div class="controls">
+                                                            <label id="addressInputLbl"></label>
+                                                            <input name="address" title="Address" type="text" class="input-large" placeholder="Address"/>
+                                                        </div>
+                                                     </div>
+                                                     <div class="control-group" id="zipInputCnt">
+                                                        <div class="controls">
+                                                            <label id="zipInputLbl"></label>
+                                                            <input name="zip" title="Zip code" type="text" class="input-small" placeholder="Zip" maxlength="5"/>
+                                                        </div>
+                                                     </div>
+                                                    <button id="locateAddrBtn" type="submit" 
+                                                                data-loading-text="Locating.." 
+                                                                autocomplete="off"
+                                                                class="btn">Locate
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-group">
+                                        <div class="accordion-heading">
+                                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accContainer" href="#acc1">
+                                                <i class="icon-exclamation-sign"></i> Select mode
+                                            </a>
+                                        </div>
+                                        <div id="acc1" class="accordion-body collapse">                                            
+                                            <div class="accordion-inner">
+                                                <div class="btn-group" data-toggle="buttons-radio">
+                                                    <button class="btn btn-small active" name="searchMode" value="point">At location</button>
+                                                    <button class="btn btn-small" name="searchMode" value="polygon">Draw region</button>
+                                                    <button class="btn btn-small" name="searchMode" value="buffer">Buffer</button>
+                                                    <button class="btn btn-small" name="searchMode" value="box">Select box</button>
+                                                </div>
+                                                <label class="description importantInfo">
+                                                    *Note: Info tool must be enabled to select contract.
+                                                </label>                                                
+                                            </div>
+                                        </div>                                    
+                                    </div>
+                                    <div class="accordion-group">
+                                        <div class="accordion-heading">
+                                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accContainer" href="#acc2">
+                                                <i class="icon-filter"></i> System
+                                            </a>
+                                        </div>
+                                        <div id="acc2" class="accordion-body collapse">
+                                            <div class="accordion-inner">
+                                                <div class="btn-group" data-toggle="buttons-radio">
+                                                    <button class="btn btn-small active" name="system" value="all">All</button>
+                                                    <button class="btn btn-small" name="system" value="stormWater">Storm water</button>
+                                                    <button class="btn btn-small" name="system" value="sanitary">Sanitary</button>
+                                                    <button class="btn btn-small" name="system" value="water" >Water</button>
+                                                </div>
+                                            </div>
+                                        </div>                                                                                    
+                                    </div>
+                                    <div class="accordion-group">
+                                        <div class="accordion-heading">
+                                            <a id="accDataResult" class="accordion-toggle" data-toggle="collapse" data-parent="#accContainer" href="#acc3">
+                                                <i class="icon-list"></i> Data
+                                            </a>
+                                        </div>
+                                        <div id="acc3" class="accordion-body collapse">
+                                            <div class="accordion-inner">
+                                                <div id="contractResult">
+                                                    <label>No contract selected.</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>                                
+                                
+                            </div>
+                        </div>
+                        <!--Custom views-->
+                        
+                        <!--End Custom views-->
+                    </div>
+                  </div><!--End map tab-->
+                  <div class="tab-pane" id="contractTab">
+                    <div id="contractContent" class="tabPaneContainer">
+                        <div class="row-fluid">
+                            <div class="span12 well">
+                                <h1>Contract</h1>
+                                <p>No contract information. Please use the map to find contracts!</p>
+                                <p>
+                                    <a href="#gotoMap" class="btn btn-primary btn-large"><i class="icon-map-marker icon-white"></i> Go to map</a>
+                                </p>
+                            </div>
+                        </div>                        
+                    </div>
+                  </div>
+                  <div class="tab-pane" id="drawingTab">
+                    <div id="drawingContent" class="tabPaneContainer">
+                        <div class="row-fluid">
+                            <div class="span12 well">
+                                <h1>Drawing</h1>
+                                <p>No drawing was loaded.</p>
+                                <p>
+                                    <a href="#gotoMap" class="btn btn-primary btn-large"><i class="icon-map-marker icon-white"></i> Go to map</a>
+                                    <a href="#gotoContract" class="btn btn-primary btn-large"><i class="icon-file icon-white"></i> Go to contract</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+ 

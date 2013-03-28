@@ -1,0 +1,48 @@
+﻿@{
+    var homeCssCls = ViewData["homeCss"] ?? "";
+    var memberCssCls = ViewData["memberCss"] ?? "";
+    var contractCssCls = ViewData["contractCss"] ?? "";
+    var drawingCssCls = ViewData["drawingCss"] ?? "";
+    var changePasswordCssCls = ViewData["changePasswordCss"] ?? "";
+}
+<ul class="nav nav-list affix span3 admin-sidenav">
+    <li class="nav-header">Application manager</li>
+    <li class="@homeCssCls">
+        <a href="@Url.Action("Index", "Admin")">
+            <i class="icon-chevron-right"></i>
+            Home
+        </a>
+    </li>
+    <li class="@memberCssCls">
+        <a href="@Url.Action("Index", "Account")">
+            <i class="icon-chevron-right"></i>
+            Membership
+        </a>
+    </li>
+    <li class="@contractCssCls">
+        <a href="@Url.Action("Index", "Contract")">
+            <i class="icon-chevron-right"></i>
+            Contracts and drawings
+        </a>
+    </li>      
+    <li class="nav-header">Account settings</li>
+    <li class="@changePasswordCssCls">
+        <a href="@Url.Action("ChangePassword", "Account")">
+            <i class="icon-chevron-right"></i>
+            Change password
+        </a>
+    </li>   
+    <li class="divider"></li>
+    <li class="">
+        <a href="@Url.Action("Index", new { action = "index", controller = "Desktop"})">
+            <i class="icon-chevron-right"></i>
+            Back to user app
+        </a>
+    </li>
+    <li class="">
+        <a href="@Url.Action("Logoff", "Account", new { mode = "normal"})">
+            <i class="icon-chevron-right"></i>
+            Sign out
+        </a>
+    </li>
+</ul>

@@ -1,0 +1,42 @@
+﻿@model ESRGC.GIS.WebMap.Models.LogOnModel
+@{ var currentUser = Session["currentUser"] as MembershipUser;}
+<div class="info-block">
+    @Html.Partial("messagePartial")
+</div>
+<div id="signInFrmContainer" class="row-fluid">
+    @if (currentUser != null || Request.IsAuthenticated) {
+        var username = currentUser == null ? User.Identity.Name : currentUser.UserName;
+        <div class="span12">
+            <p><small>Signed in as <strong>@username</strong></small> <i class="icon-ok"></i></p>
+            @if (Roles.IsUserInRole(username, "admin")) {
+                <p>
+                    @Html.ActionLink("Sign out", "LogOff", "Account", new { @class = "btn", id = "signOutBtn" })
+                    @Html.ActionLink("Manage", "index", "Admin", new { }, new { @class = "btn btn-primary", id = "manageBtn" })
+                </p>
+            }
+            else { 
+                        
+                <div class="alert alert-block">
+                  <button type="button" class="close" data-dismiss="alert">×</button>
+                  <h4>Warning!</h4>
+                  Your account is not in admin role. You can not manage application. Please contact administrator for more information.
+                </div>
+                
+                @Html.ActionLink("Sign out", "LogOff", "Account", new { @class = "btn", id = "signOutBtn" })
+            }
+        </div> 
+        
+    }
+    else {
+        <div class="span12">
+            <p>
+                <small>Please sign in to manage contracts. After signing in you can add/edit/delete
+                contracts and drawings.</small>
+            </p>        
+            @Html.ValidationSummary(true, "Sign in failed!",
+                new { @class = "alert alert-error", style = "margin-bottom: 10px;" })
+            @Html.Partial("logonFormPartial")    
+        </div>
+        
+    }
+</div>
